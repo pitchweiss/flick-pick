@@ -5,7 +5,7 @@ interface MainContentProps {
 }
 
 const MainContent: FC<MainContentProps> = ({ children }) => {
-  return <main className="container mx-auto mt-16">{children}</main>;
+  return <main className="container p-4 mx-auto mt-16">{children}</main>;
 };
 
 export default MainContent;
