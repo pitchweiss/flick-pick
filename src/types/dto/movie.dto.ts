@@ -12,4 +12,5 @@ export type TMovieDto = {
   title: string;
   video: boolean;
   ratings: TRating[];
+  release_date?: string;
 };
