@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 import { VideoCameraIcon } from "@heroicons/react/24/solid";
 
@@ -21,4 +21,5 @@ const Header: FC = () => {
   );
 };
 
-export default Header;
+const MemoizedHeader = memo(Header);
+export default MemoizedHeader;

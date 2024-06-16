@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, memo } from "react";
 
 interface MainContentProps {
   children: ReactNode;
@@ -10,4 +10,5 @@ const MainContent: FC<MainContentProps> = ({ children }) => {
   );
 };
 
-export default MainContent;
+const MemoizedMainContent = memo(MainContent);
+export default MemoizedMainContent;

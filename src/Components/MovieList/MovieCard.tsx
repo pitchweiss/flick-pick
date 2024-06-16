@@ -1,7 +1,6 @@
-import { FC, useEffect, useRef } from "react";
-
 import { HeartIcon as OutlineHeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
+import { FC, useCallback, useEffect, useRef } from "react";
 import { TMovieDto } from "../../types/dto/movie.dto";
 import { formatDate } from "../../utils/formatDate";
 
@@ -14,11 +13,16 @@ interface IMovieCardProps {
 const MovieCard: FC<IMovieCardProps> = ({ movie, isActive, isFavorite }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  const focusCard = useCallback(() => {
     if (isActive && cardRef.current) {
-      cardRef?.current.focus();
+      cardRef.current.focus();
     }
   }, [isActive]);
+
+  useEffect(() => {
+    focusCard();
+  }, [focusCard]);
+
   return (
     <div
       className={`rounded-lg shadow-lg relative transform transition-transform duration-300 ${
@@ -54,4 +58,5 @@ const MovieCard: FC<IMovieCardProps> = ({ movie, isActive, isFavorite }) => {
     </div>
   );
 };
+
 export default MovieCard;

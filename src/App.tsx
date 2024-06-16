@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import Header from "./Components/Header/Header";
 import MainContent from "./Components/MainContent/MainContent";
@@ -12,10 +12,14 @@ import { filterAndSortMovies } from "./utils/filterAndSortMovies";
 function App() {
   const [movies, setMovies] = useState<TMovieDto[]>([]);
 
+  const uniqueMovies = useMemo(
+    () => filterAndSortMovies(allMovies as TMovieDto[]),
+    [allMovies]
+  );
+
   useEffect(() => {
-    const uniqueMovies = filterAndSortMovies(allMovies as TMovieDto[]);
     setMovies(uniqueMovies);
-  }, []);
+  }, [uniqueMovies]);
 
   return (
     <>
