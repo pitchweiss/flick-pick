@@ -1,6 +1,7 @@
 import { HeartIcon as OutlineHeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
-import { FC, useCallback, useEffect, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
+import placeholderImage from "../../assets/placeholder.png"; // Ensure you have a placeholder image in your assets folder
 import { TMovieDto } from "../../types/dto/movie.dto";
 import { formatDate } from "../../utils/formatDate";
 
@@ -12,29 +13,32 @@ interface IMovieCardProps {
 
 const MovieCard: FC<IMovieCardProps> = ({ movie, isActive, isFavorite }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [imageError, setImageError] = useState(false);
 
-  const focusCard = useCallback(() => {
+  useEffect(() => {
     if (isActive && cardRef.current) {
       cardRef.current.focus();
     }
   }, [isActive]);
 
-  useEffect(() => {
-    focusCard();
-  }, [focusCard]);
-
   return (
     <div
-      className={`rounded-lg shadow-lg relative transform transition-transform duration-300 ${
+      className={`rounded-lg shadow-lg relative transform transition-transform duration-300 flex flex-col justify-center items-center${
         isActive ? "scale-105 border-2 border-white" : ""
       }`}
       tabIndex={0}
       ref={cardRef}
     >
       <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        src={
+          imageError
+            ? placeholderImage
+            : `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        }
         alt={movie.title}
         className="rounded-lg"
+        onError={() => setImageError(true)}
+        loading="lazy"
       />
       <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-b from-transparent to-off-black/60" />
       <div className="h-[12.5%] absolute top-0 w-full bg-gradient-to-b from-off-black to-off-black/80 rounded-t-lg border-1 border-light-gray">
