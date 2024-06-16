@@ -6,9 +6,7 @@ interface MainContentProps {
 
 const MainContent: FC<MainContentProps> = ({ children }) => {
   return (
-    <main className="container p-4 mx-auto mt-16 overflow-y-scroll max-w-7xl">
-      {children}
-    </main>
+    <main className="container p-4 mx-auto mt-16 max-w-7xl">{children}</main>
   );
 };
 

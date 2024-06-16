@@ -21,8 +21,8 @@ const MovieCard: FC<IMovieCardProps> = ({ movie, isActive, isFavorite }) => {
   }, [isActive]);
   return (
     <div
-      className={`rounded-lg shadow-lg relative ${
-        isActive ? "border-2 border-white" : ""
+      className={`rounded-lg shadow-lg relative transform transition-transform duration-300 ${
+        isActive ? "scale-105 border-2 border-white" : ""
       }`}
       tabIndex={0}
       ref={cardRef}
