@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
+import { addToFavorites, checkIsFavorite } from "../../utils/manageFavorites";
 
 import { TMovieDto } from "../../types/dto/movie.dto";
-import { addToFavorites, checkIsFavorite } from "../../utils/manageFavorites";
 import MovieCard from "./MovieCard";
 
 interface IMovieGridProps {
