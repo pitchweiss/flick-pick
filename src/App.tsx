@@ -21,6 +21,10 @@ function App() {
     setMovies(uniqueMovies);
   }, [uniqueMovies]);
 
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+  }, []);
+
   return (
     <>
       <Header />

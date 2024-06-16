@@ -38,7 +38,6 @@ const MovieCard: FC<IMovieCardProps> = ({ movie, isActive, isFavorite }) => {
         alt={movie.title}
         className="rounded-lg"
         onError={() => setImageError(true)}
-        loading="lazy"
       />
       <div className="absolute bottom-0 left-0 right-0 h-full bg-gradient-to-b from-transparent to-off-black/60" />
       <div className="h-[12.5%] absolute top-0 w-full bg-gradient-to-b from-off-black to-off-black/80 rounded-t-lg border-1 border-light-gray">
